@@ -36,6 +36,13 @@ class BuyDetails extends StatelessWidget {
                         fontSize: 23,
                         color: TEXT_COLOR_W),
                   ),
+                  SizedBox(
+                    width: 160,
+                  ),
+                  Icon(
+                    Icons.favorite_border_rounded,
+                    color: RED_COLOR,
+                  ),
                 ],
               ),
               SizedBox(
@@ -73,14 +80,30 @@ class BuyDetails extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Icon(
-                        Icons.favorite_border_outlined,
-                        color: TEXT_COLOR_W,
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: GOLDEN_COLOR,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: GOLDEN_COLOR,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: GOLDEN_COLOR,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: GOLDEN_COLOR,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: GOLDEN_COLOR,
+                          ),
+                        ],
                       ),
-                      Icon(
-                        Icons.star_border_outlined,
-                        color: TEXT_COLOR_W,
-                      )
                     ],
                   )
                 ],

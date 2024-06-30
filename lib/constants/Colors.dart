@@ -8,7 +8,8 @@ Color hexToColor(String code) {
 Color TEXT_COLOR_W = Color.fromARGB(255, 224, 221, 221);
 Color LIGHT_BLUE_COLOR = Color.fromARGB(255, 129, 167, 199);
 Color MORE_LIGHT_BLUE_COLOR = Color.fromARGB(255, 179, 196, 210);
-
+Color GOLDEN_COLOR = Color.fromARGB(255, 249, 226, 19);
+Color RED_COLOR = Color.fromARGB(255, 155, 17, 7);
 Color MAIN_BLUE_COLOR = hexToColor("#525CEB");
 Color PINK = hexToColor("#FF90BC");
 // Color DARK_BLUE_COLOR = hexToColor("#0F2167");
