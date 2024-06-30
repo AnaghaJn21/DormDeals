@@ -1,3 +1,5 @@
+import 'package:dormdeals/login_signup.dart';
+import 'package:dormdeals/sell_details.dart';
 import 'package:dormdeals/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,25 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "DormDeals",
-      home: const SplashScreen(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            ElevatedButton(onPressed: () {}, child: Text("login")),
-            ElevatedButton(onPressed: () {}, child: Text("signup"))
-          ],
-        ),
-      ),
+      home: SellDetails(),
     );
   }
 }
