@@ -1,4 +1,5 @@
 import 'package:dormdeals/buy_details.dart';
+import 'package:dormdeals/pages/Profile_Pg.dart';
 import 'package:dormdeals/pages/sell_details.dart';
 import 'package:dormdeals/buy_details.dart';
 import 'package:dormdeals/pages/sell_details.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "DormDeals",
       // color: LIGHT_BLUE_COLOR,
-      home: SplashScreen(),
+      home: ProfilePg(),
     );
   }
 }
