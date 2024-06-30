@@ -37,11 +37,18 @@ class BuyDetails extends StatelessWidget {
                         color: TEXT_COLOR_W),
                   ),
                   SizedBox(
-                    width: 160,
+                    width: 120,
                   ),
                   Icon(
                     Icons.favorite_border_rounded,
                     color: RED_COLOR,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Icon(
+                    Icons.share,
+                    color: TEXT_COLOR_W,
                   ),
                 ],
               ),
@@ -65,7 +72,7 @@ class BuyDetails extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        "100",
+                        "\$100",
                         style: TextStyle(color: TEXT_COLOR_W),
                       ),
                       SizedBox(
@@ -112,7 +119,7 @@ class BuyDetails extends StatelessWidget {
                 height: 50,
               ),
               Text(
-                "About product ognoivn aiavnoij oinaoiv a invoain aoijna oi aipowjf arv apjapojva vp vj a.",
+                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 style: TextStyle(color: TEXT_COLOR_W),
               ),
               SizedBox(
