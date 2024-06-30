@@ -20,56 +20,70 @@ class _LandingPgState extends State<LandingPg> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: DARK_BLUE_COLOR,
-      bottomNavigationBar: CurvedNavigationBar(
-        color: LIGHT_BLUE_COLOR,
-        backgroundColor: DARK_BLUE_COLOR,
-        index: _page,
-        animationDuration: Duration(milliseconds: 300),
-        key: _bottomNavigationKey,
-        items: [
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.shopping_bag_outlined,
-                color: TEXT_COLOR_W,
-              ),
-              labelStyle: TextStyle(color: TEXT_COLOR_W),
-              label: "Buy"),
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.home,
-                color: TEXT_COLOR_W,
-              ),
-              labelStyle: TextStyle(color: TEXT_COLOR_W),
-              label: "Home"),
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.add_circle_outline_outlined,
-                color: TEXT_COLOR_W,
-              ),
-              labelStyle: TextStyle(color: TEXT_COLOR_W),
-              label: "Sell"),
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.person,
-                color: TEXT_COLOR_W,
-              ),
-              labelStyle: TextStyle(color: TEXT_COLOR_W),
-              label: "Profile"),
-          CurvedNavigationBarItem(
-              child: Icon(
-                Icons.settings,
-                color: TEXT_COLOR_W,
-              ),
-              label: "Settings",
-              labelStyle: TextStyle(color: TEXT_COLOR_W))
-        ],
-        onTap: (value) {
-          setState(() {
-            _page = value;
-          });
-        },
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(iconTheme: IconThemeData()),
+        child: CurvedNavigationBar(
+          color: LIGHT_BLUE_COLOR,
+          backgroundColor: DARK_BLUE_COLOR,
+          index: _page,
+          animationDuration: Duration(milliseconds: 300),
+          key: _bottomNavigationKey,
+          items: [
+            CurvedNavigationBarItem(
+                child: Icon(
+                  Icons.shopping_bag_outlined,
+                  color: TEXT_COLOR_W,
+                ),
+                labelStyle: TextStyle(color: TEXT_COLOR_W),
+                label: "Buy"),
+            CurvedNavigationBarItem(
+                child: Icon(
+                  Icons.home,
+                  color: TEXT_COLOR_W,
+                ),
+                labelStyle: TextStyle(color: TEXT_COLOR_W),
+                label: "Home"),
+            CurvedNavigationBarItem(
+                child: Icon(
+                  Icons.add_circle_outline_outlined,
+                  color: TEXT_COLOR_W,
+                ),
+                labelStyle: TextStyle(color: TEXT_COLOR_W),
+                label: "Sell"),
+            CurvedNavigationBarItem(
+                child: Icon(
+                  Icons.person,
+                  color: TEXT_COLOR_W,
+                ),
+                labelStyle: TextStyle(color: TEXT_COLOR_W),
+                label: "Profile"),
+            CurvedNavigationBarItem(
+                child: Icon(
+                  Icons.settings,
+                  color: TEXT_COLOR_W,
+                ),
+                label: "Settings",
+                labelStyle: TextStyle(color: TEXT_COLOR_W))
+          ],
+          onTap: (value) {
+            setState(() {
+              _page = value;
+            });
+          },
+        ),
       ),
-      body: Container(),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            IconButton(
+                alignment: Alignment.topLeft,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back_ios_new)),
+          ],
+        ),
+      ),
     ));
   }
 }

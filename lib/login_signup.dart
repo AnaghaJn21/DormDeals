@@ -64,15 +64,17 @@ class LoginOrSignup extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.pushReplacement(
+        Navigator.push(
             context, MaterialPageRoute(builder: (context) => navigateTo()));
       },
       child: Text(
         text,
-        style: TextStyle(color: Colors.white),
+        style:
+            TextStyle(color: text == "Login" ? TEXT_COLOR_W : LIGHT_BLUE_COLOR),
       ),
       style: ElevatedButton.styleFrom(
-          backgroundColor: LIGHT_BLUE_COLOR, minimumSize: Size(200, 50)),
+          backgroundColor: text == "Login" ? LIGHT_BLUE_COLOR : TEXT_COLOR_W,
+          minimumSize: Size(345, 60)),
     );
   }
 }

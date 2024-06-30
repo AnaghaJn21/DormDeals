@@ -1,3 +1,4 @@
+import 'package:dormdeals/constants/Colors.dart';
 import 'package:flutter/material.dart';
 
 class DetsFields extends StatelessWidget {
@@ -17,17 +18,22 @@ class DetsFields extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            child: Text(text),
+            child: Text(
+              text,
+              style: TextStyle(color: TEXT_COLOR_W),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 1, left: 20, top: 1),
+            padding:
+                const EdgeInsets.only(bottom: 1, left: 30, top: 1, right: 20),
             child: TextField(
-              controller: tc,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(10))),
-            ),
+                cursorColor: TEXT_COLOR_W,
+                controller: tc,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    filled: true,
+                    fillColor: LIGHT_BLUE_COLOR)),
           )
         ],
       ),

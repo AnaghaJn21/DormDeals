@@ -1,3 +1,4 @@
+import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
 import 'package:dormdeals/pages/Landing_Pg.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _SignUpPgState extends State<SignUpPg> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: DARK_BLUE_COLOR,
         body: Padding(
           padding: const EdgeInsets.only(left: 10, top: 40.0, right: 30),
           child: Column(
@@ -31,11 +33,16 @@ class _SignUpPgState extends State<SignUpPg> {
                 children: [
                   IconButton(
                       alignment: Alignment.topLeft,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       icon: Icon(Icons.arrow_back_ios_new)),
                   Text(
                     "Sign Up".toUpperCase(),
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 23,
+                        color: TEXT_COLOR_W),
                   ),
                 ],
               ),
@@ -56,8 +63,10 @@ class _SignUpPgState extends State<SignUpPg> {
                     setState(() {
                       email = emailcontroller.text;
                       pswd = pswdcontroller.text;
+                      name = namecontroller.text;
+                      num = numcontroller.text;
                     });
-                    Navigator.pushReplacement(context,
+                    Navigator.push(context,
                         MaterialPageRoute(builder: (context) => LandingPg()));
                   },
                   child: Text(

@@ -61,7 +61,7 @@ Widget _textarea(String subheading, TextEditingController controller) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      Text(subheading, style: TextStyle(fontSize: 18, color: Colors.white)),
+      Text(subheading, style: TextStyle(fontSize: 18, color: TEXT_COLOR_W)),
       SizedBox(
         height: 10,
       ),
