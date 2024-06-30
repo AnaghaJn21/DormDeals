@@ -1,3 +1,4 @@
+import 'package:dormdeals/constants/Colors.dart';
 import 'package:flutter/material.dart';
 
 class SellDetails extends StatelessWidget {
@@ -20,7 +21,7 @@ class SellDetails extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          color: Color.fromRGBO(8, 3, 41, 1.0),
+          color: DARK_BLUE_COLOR,
           child: Padding(
               padding: EdgeInsets.all(16),
               child: Column(
@@ -69,7 +70,7 @@ Widget _textarea(String subheading, TextEditingController controller) {
         decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             filled: true,
-            fillColor: Color.fromARGB(255, 79, 101, 119)),
+            fillColor: LIGHT_BLUE_COLOR),
       ),
       SizedBox(
         height: 20,

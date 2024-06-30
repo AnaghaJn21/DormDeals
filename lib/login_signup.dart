@@ -1,3 +1,4 @@
+import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/pages/Login_Pg.dart';
 import 'package:dormdeals/pages/SignUp_Pg.dart';
 import 'package:dormdeals/splash_screen.dart';
@@ -31,43 +32,47 @@ class LoginSignup extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPg()));
-                    },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 59, 118, 165),
-                        minimumSize: Size(200, 50)),
+                  LoginOrSignup(
+                    text: "Login",
+                    navigateTo: () => LoginPg(),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUpPg()));
-                    },
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 59, 118, 165),
-                        minimumSize: Size(200, 50)),
+                  LoginOrSignup(
+                    text: "SignUp",
+                    navigateTo: () => SignUpPg(),
                   ),
                 ],
               ))
         ],
       ),
     ));
+  }
+}
+
+class LoginOrSignup extends StatelessWidget {
+  final Widget Function() navigateTo;
+  final String text;
+  const LoginOrSignup({
+    super.key,
+    required this.navigateTo,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => navigateTo()));
+      },
+      child: Text(
+        text,
+        style: TextStyle(color: Colors.white),
+      ),
+      style: ElevatedButton.styleFrom(
+          backgroundColor: LIGHT_BLUE_COLOR, minimumSize: Size(200, 50)),
+    );
   }
 }

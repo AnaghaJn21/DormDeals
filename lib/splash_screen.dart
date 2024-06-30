@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/login_signup.dart';
 import 'package:dormdeals/pages/sell_details.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class SplashScreen extends StatelessWidget {
       ),
       nextScreen: LoginSignup(),
       splashIconSize: 400,
-      backgroundColor: Color.fromRGBO(8, 3, 41, 1.0),
+      backgroundColor: DARK_BLUE_COLOR,
       duration: 4000, // duration in milliseconds (3 seconds)
       splashTransition: SplashTransition.fadeTransition,
     );

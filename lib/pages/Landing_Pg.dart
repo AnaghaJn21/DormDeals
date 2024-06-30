@@ -1,5 +1,6 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:dormdeals/constants/Colors.dart';
 import 'package:flutter/material.dart';
 
 class LandingPg extends StatefulWidget {
@@ -18,10 +19,10 @@ class _LandingPgState extends State<LandingPg> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: DARK_BLUE_COLOR,
       bottomNavigationBar: CurvedNavigationBar(
-        // backgroundColor: ,
-        // color: ,
+        color: LIGHT_BLUE_COLOR,
+        backgroundColor: DARK_BLUE_COLOR,
         index: _page,
         animationDuration: Duration(milliseconds: 300),
         key: _bottomNavigationKey,
@@ -29,15 +30,38 @@ class _LandingPgState extends State<LandingPg> {
           CurvedNavigationBarItem(
               child: Icon(
                 Icons.shopping_bag_outlined,
-                // color: ,
+                color: TEXT_COLOR_W,
               ),
+              labelStyle: TextStyle(color: TEXT_COLOR_W),
               label: "Buy"),
-          CurvedNavigationBarItem(child: Icon(Icons.home), label: "Home"),
           CurvedNavigationBarItem(
-              child: Icon(Icons.add_circle_outline_outlined), label: "Sell"),
-          CurvedNavigationBarItem(child: Icon(Icons.person), label: "Profile"),
+              child: Icon(
+                Icons.home,
+                color: TEXT_COLOR_W,
+              ),
+              labelStyle: TextStyle(color: TEXT_COLOR_W),
+              label: "Home"),
           CurvedNavigationBarItem(
-              child: Icon(Icons.settings), label: "Settings")
+              child: Icon(
+                Icons.add_circle_outline_outlined,
+                color: TEXT_COLOR_W,
+              ),
+              labelStyle: TextStyle(color: TEXT_COLOR_W),
+              label: "Sell"),
+          CurvedNavigationBarItem(
+              child: Icon(
+                Icons.person,
+                color: TEXT_COLOR_W,
+              ),
+              labelStyle: TextStyle(color: TEXT_COLOR_W),
+              label: "Profile"),
+          CurvedNavigationBarItem(
+              child: Icon(
+                Icons.settings,
+                color: TEXT_COLOR_W,
+              ),
+              label: "Settings",
+              labelStyle: TextStyle(color: TEXT_COLOR_W))
         ],
         onTap: (value) {
           setState(() {
