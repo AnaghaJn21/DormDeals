@@ -3,6 +3,7 @@ import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:dormdeals/buy_details.dart';
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/pages/Buy_Main_Pg.dart';
+import 'package:dormdeals/pages/Login_Pg.dart';
 import 'package:dormdeals/pages/Profile_Pg.dart';
 import 'package:dormdeals/pages/Settings_Pg.dart';
 import 'package:dormdeals/pages/sell_details.dart';
@@ -23,20 +24,44 @@ class _LandingPgState extends State<LandingPg> {
   final screens = [
     BuyDetails(),
     SellDetails(),
-    LandingPg(),
+    null,
     ProfilePg(),
     SettingsPg()
   ];
 
+  //   @override
+  // void initState() {
+  //   super.initState();
+  //   // Set the home content dynamically after initialization
+  //   screens[2] = _buildHomeContent();
+  // }
+  // Widget _buildHomeContent() {
+  //   return Column(
+  //     children: <Widget>[
+  //       IconButton(
+  //         alignment: Alignment.topLeft,
+  //         onPressed: () {
+  //           Navigator.of(context).pop();
+  //         },
+  //         icon: Icon(Icons.arrow_back),
+  //       ),
+  //       Text(
+  //         "HOME PAGE",
+  //         style: TextStyle(fontSize: 100, color: TEXT_COLOR_W),
+  //       ),
+  //     ],
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      extendBody: true,
       backgroundColor: DARK_BLUE_COLOR,
       bottomNavigationBar: CurvedNavigationBar(
         color: LIGHT_BLUE_COLOR,
         // buttonBackgroundColor: MORE_LIGHT_BLUE_COLOR,
-        backgroundColor: DARK_BLUE_COLOR,
+        backgroundColor: Colors.transparent,
         index: _page,
         animationDuration: Duration(milliseconds: 300),
         key: _bottomNavigationKey,
@@ -83,22 +108,7 @@ class _LandingPgState extends State<LandingPg> {
           });
         },
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            IconButton(
-                alignment: Alignment.topLeft,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back)),
-            Text(
-              "HOME PAGEE",
-              style: TextStyle(fontSize: 100, color: TEXT_COLOR_W),
-            )
-          ],
-        ),
-      ),
+      body: screens[_page],
     ));
   }
 }

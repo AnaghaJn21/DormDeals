@@ -60,7 +60,7 @@ class _SellDetailsState extends State<SellDetails> {
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 40, bottom: 10),
+                    padding: const EdgeInsets.only(top: 40, bottom: 100),
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() {});
