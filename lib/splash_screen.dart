@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:dormdeals/homepage.dart';
 import 'package:dormdeals/login_signup.dart';
 import 'package:dormdeals/sell_details.dart';
 import 'package:flutter/material.dart';

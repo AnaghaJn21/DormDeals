@@ -1,7 +1,6 @@
-import 'package:dormdeals/login_signup.dart';
-import 'package:dormdeals/sell_details.dart';
 import 'package:dormdeals/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'pages/Login_Pg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "DormDeals",
-      home: SellDetails(),
+      // color: LIGHT_BLUE_COLOR,
+      home: const SplashScreen(),
     );
   }
 }
