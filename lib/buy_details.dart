@@ -74,11 +74,11 @@ class BuyDetails extends StatelessWidget {
                   Column(
                     children: [
                       Icon(
-                        Icons.arrow_back_ios_new,
+                        Icons.favorite_border_outlined,
                         color: TEXT_COLOR_W,
                       ),
                       Icon(
-                        Icons.arrow_back_ios_new,
+                        Icons.star_border_outlined,
                         color: TEXT_COLOR_W,
                       )
                     ],

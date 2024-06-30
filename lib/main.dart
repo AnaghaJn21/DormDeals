@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "DormDeals",
       // color: LIGHT_BLUE_COLOR,
-      home: BuyDetails(),
+      home: SplashScreen(),
     );
   }
 }

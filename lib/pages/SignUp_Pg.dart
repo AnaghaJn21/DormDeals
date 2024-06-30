@@ -36,7 +36,7 @@ class _SignUpPgState extends State<SignUpPg> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      icon: Icon(Icons.arrow_back_ios_new)),
+                      icon: Icon(Icons.arrow_back)),
                   Text(
                     "Sign Up".toUpperCase(),
                     style: TextStyle(

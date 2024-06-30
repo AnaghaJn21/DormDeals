@@ -1,6 +1,7 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
 import 'package:dormdeals/pages/Landing_Pg.dart';
+import 'package:dormdeals/pages/sell_details.dart';
 import 'package:flutter/material.dart';
 
 TextEditingController emailcontroller = TextEditingController();
@@ -32,7 +33,7 @@ class _LoginPgState extends State<LoginPg> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      icon: Icon(Icons.arrow_back_ios_new)),
+                      icon: Icon(Icons.arrow_back)),
                   Text(
                     "Login".toUpperCase(),
                     style: TextStyle(
