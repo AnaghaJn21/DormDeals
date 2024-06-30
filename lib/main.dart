@@ -1,3 +1,5 @@
+import 'package:dormdeals/buy_details.dart';
+import 'package:dormdeals/pages/sell_details.dart';
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "DormDeals",
-      // color: DARK_BLUE_COLOR,
-      theme: ThemeData(focusColor: TEXT_COLOR_W, hoverColor: TEXT_COLOR_W),
-      home: const SplashScreen(),
+      // color: LIGHT_BLUE_COLOR,
+      home: BuyDetails(),
     );
   }
 }

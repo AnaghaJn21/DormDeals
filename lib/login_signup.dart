@@ -12,6 +12,7 @@ class LoginSignup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+      width: double.infinity,
       color: Color.fromRGBO(8, 3, 41, 1.0),
       child: Column(
         children: [
