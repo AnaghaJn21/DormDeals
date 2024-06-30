@@ -1,3 +1,5 @@
+import 'package:dormdeals/pages/Login_Pg.dart';
+import 'package:dormdeals/pages/SignUp_Pg.dart';
 import 'package:dormdeals/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -30,9 +32,14 @@ class LoginSignup extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPg()));
+                    },
                     child: Text(
-                      'Sign Up',
+                      'Login',
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -43,9 +50,14 @@ class LoginSignup extends StatelessWidget {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUpPg()));
+                    },
                     child: Text(
-                      'Login',
+                      'Sign Up',
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
