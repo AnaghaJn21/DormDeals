@@ -9,7 +9,7 @@ class ProfilePg extends StatelessWidget {
     return Scaffold(
       backgroundColor: DARK_BLUE_COLOR,
       body: Padding(
-        padding: EdgeInsets.fromLTRB(50, 20, 20, 0),
+        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: Column(
           children: [
             Row(
@@ -46,27 +46,30 @@ class ProfilePg extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  color: TEXT_COLOR_W,
-                ),
-                Column(
-                  children: [
-                    Text("Anagha Jayan", style: TextStyle(color: TEXT_COLOR_W)),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Student",
-                      style: TextStyle(color: TEXT_COLOR_W),
-                    )
-                  ],
-                )
-              ],
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundImage:
+                            AssetImage('assets/images/eachpro.png'),
+                      ),
+                      // Text("Anagha Jayan",
+                      //     style: TextStyle(color: TEXT_COLOR_W)),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Text(
+                      //   "Student",
+                      //   style: TextStyle(color: TEXT_COLOR_W),
+                      // )
+                    ],
+                  )
+                ],
+              ),
             ),
             SizedBox(
               height: 40,
@@ -74,7 +77,7 @@ class ProfilePg extends StatelessWidget {
             Container(
               width: 300,
               height: 200,
-              color: TEXT_COLOR_W,
+              color: LIGHT_BLUE_COLOR,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
@@ -121,18 +124,24 @@ class ProfilePg extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 40,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
                   width: 150,
                   height: 120,
-                  color: TEXT_COLOR_W,
+                  decoration: BoxDecoration(
+                    color: LIGHT_BLUE_COLOR,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: Column(
                     children: [
                       Text(
                         'SOLD',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 20,
@@ -147,11 +156,16 @@ class ProfilePg extends StatelessWidget {
                 Container(
                   width: 150,
                   height: 120,
-                  color: TEXT_COLOR_W,
+                  decoration: BoxDecoration(
+                    color: LIGHT_BLUE_COLOR,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: Column(
                     children: [
                       Text(
                         'BOUGHT',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 20,
@@ -163,14 +177,18 @@ class ProfilePg extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 100,
+              height: 50,
             ),
-            ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'LOGOUT',
-                  style: TextStyle(color: DARK_BLUE_COLOR),
-                )),
+            Center(
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: LIGHT_BLUE_COLOR),
+                  child: Text(
+                    'LOGOUT',
+                    style: TextStyle(color: DARK_BLUE_COLOR),
+                  )),
+            ),
           ],
         ),
       ),

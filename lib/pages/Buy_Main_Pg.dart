@@ -22,7 +22,7 @@ class BuyMainPg extends StatelessWidget {
               style: TextStyle(),
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "${Icons.search}Search",
+                  hintText: "Search",
                   hintStyle: TextStyle(color: TEXT_COLOR_W)),
             ),
             Text(
