@@ -63,6 +63,9 @@ flutter:
   assets:
     - assets\lottie\Animation.json
     - assets\images\dorm-deals-high-resolution-logo.png
+    - assets\images\Full_Logo.png
+    - assets\images\LogoDD.png
+    - assets\images\eachpro.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

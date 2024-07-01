@@ -23,7 +23,7 @@ class LoginSignup extends StatelessWidget {
               child: Image.asset(
                 height: 400,
                 width: 400,
-                "assets/images/dorm-deals-high-resolution-logo.png",
+                r"assets\images\Full_Logo.png",
                 fit: BoxFit.contain,
               ),
             ),

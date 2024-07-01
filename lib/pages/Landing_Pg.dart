@@ -1,7 +1,8 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
-import 'package:dormdeals/buy_details.dart';
+import 'package:dormdeals/pages/buy_details.dart';
 import 'package:dormdeals/constants/Colors.dart';
+import 'package:dormdeals/pages/All_Product_GV.dart';
 import 'package:dormdeals/pages/Buy_Main_Pg.dart';
 import 'package:dormdeals/pages/Login_Pg.dart';
 import 'package:dormdeals/pages/Profile_Pg.dart';
@@ -21,13 +22,7 @@ class _LandingPgState extends State<LandingPg> {
 
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
-  final screens = [
-    BuyDetails(),
-    SellDetails(),
-    null,
-    ProfilePg(),
-    SettingsPg()
-  ];
+  final screens = [BuyMainPg(), SellDetails(), null, ProfilePg(), SettingsPg()];
 
   //   @override
   // void initState() {

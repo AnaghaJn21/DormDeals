@@ -1,10 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/login_signup.dart';
-import 'package:dormdeals/pages/sell_details.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:dormdeals/main.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

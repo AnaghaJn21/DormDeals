@@ -14,3 +14,4 @@ Color MAIN_BLUE_COLOR = hexToColor("#525CEB");
 Color PINK = hexToColor("#FF90BC");
 // Color DARK_BLUE_COLOR = hexToColor("#0F2167");
 Color DARK_BLUE_COLOR = Color.fromRGBO(8, 3, 41, 1.0);
+Color GRAY_COLOR = Color.fromARGB(255, 118, 115, 115);

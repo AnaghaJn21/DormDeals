@@ -60,7 +60,7 @@ class BuyDetails extends StatelessWidget {
                   height: 300,
                   width: 300,
                   child: Image.asset(
-                    "assets/images/dorm-deals-high-resolution-logo.png",
+                    "assets/images/Full_Logo.png",
                     fit: BoxFit.contain,
                   )),
               SizedBox(
