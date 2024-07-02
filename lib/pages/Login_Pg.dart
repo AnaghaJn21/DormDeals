@@ -1,5 +1,6 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
+import 'package:dormdeals/constants/Headings.dart';
 import 'package:dormdeals/pages/Landing_Pg.dart';
 import 'package:dormdeals/pages/sell_details.dart';
 import 'package:flutter/material.dart';
@@ -34,13 +35,7 @@ class _LoginPgState extends State<LoginPg> {
                         Navigator.of(context).pop();
                       },
                       icon: Icon(Icons.arrow_back)),
-                  Text(
-                    "Login".toUpperCase(),
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23,
-                        color: TEXT_COLOR_W),
-                  ),
+                  Headings(text: "Login"),
                 ],
               ),
               SizedBox(

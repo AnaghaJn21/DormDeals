@@ -1,4 +1,5 @@
 import 'package:dormdeals/constants/Colors.dart';
+import 'package:dormdeals/constants/Headings.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePg extends StatelessWidget {
@@ -26,13 +27,7 @@ class ProfilePg extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                Text(
-                  "Profile".toUpperCase(),
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                      color: TEXT_COLOR_W),
-                ),
+                Headings(text: "profile"),
                 // SizedBox(
                 //   width: 100,
                 // ),

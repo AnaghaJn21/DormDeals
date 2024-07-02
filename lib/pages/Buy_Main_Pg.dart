@@ -1,4 +1,5 @@
 import 'package:dormdeals/constants/Colors.dart';
+import 'package:dormdeals/constants/Headings.dart';
 import 'package:dormdeals/pages/All_Product_GV.dart';
 import 'package:flutter/material.dart';
 
@@ -25,10 +26,7 @@ class BuyMainPg extends StatelessWidget {
                   hintText: "${Icons.search}Search",
                   hintStyle: TextStyle(color: TEXT_COLOR_W)),
             ),
-            Text(
-              "All Products",
-              style: TextStyle(color: TEXT_COLOR_W, fontSize: 20),
-            ),
+            Headings(text: "All Products"),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: AllProductGV(),

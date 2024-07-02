@@ -1,5 +1,6 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
+import 'package:dormdeals/constants/Headings.dart';
 import 'package:dormdeals/pages/Landing_Pg.dart';
 import 'package:flutter/material.dart';
 
@@ -37,13 +38,7 @@ class _SignUpPgState extends State<SignUpPg> {
                         Navigator.of(context).pop();
                       },
                       icon: Icon(Icons.arrow_back)),
-                  Text(
-                    "Sign Up".toUpperCase(),
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23,
-                        color: TEXT_COLOR_W),
-                  ),
+                  Headings(text: "Sign Up"),
                 ],
               ),
               SizedBox(

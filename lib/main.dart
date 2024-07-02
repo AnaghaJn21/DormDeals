@@ -1,3 +1,4 @@
+import 'package:dormdeals/pages/About_Pg.dart';
 import 'package:dormdeals/pages/Buy_Main_Pg.dart';
 import 'package:dormdeals/pages/Profile_Pg.dart';
 import 'package:dormdeals/splash_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "DormDeals",
       // color: LIGHT_BLUE_COLOR,
-      home: SplashScreen(),
+      home: AboutPg(),
     );
   }
 }

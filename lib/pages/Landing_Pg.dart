@@ -6,7 +6,7 @@ import 'package:dormdeals/pages/All_Product_GV.dart';
 import 'package:dormdeals/pages/Buy_Main_Pg.dart';
 import 'package:dormdeals/pages/Login_Pg.dart';
 import 'package:dormdeals/pages/Profile_Pg.dart';
-import 'package:dormdeals/pages/Settings_Pg.dart';
+import 'package:dormdeals/pages/About_Pg.dart';
 import 'package:dormdeals/pages/sell_details.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _LandingPgState extends State<LandingPg> {
 
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
-  final screens = [BuyMainPg(), SellDetails(), null, ProfilePg(), SettingsPg()];
+  final screens = [BuyMainPg(), SellDetails(), null, ProfilePg(), AboutPg()];
 
   //   @override
   // void initState() {
@@ -91,10 +91,10 @@ class _LandingPgState extends State<LandingPg> {
               label: "Profile"),
           CurvedNavigationBarItem(
               child: Icon(
-                Icons.settings,
+                Icons.help,
                 color: TEXT_COLOR_W,
               ),
-              label: "Settings",
+              label: "About",
               labelStyle: TextStyle(color: TEXT_COLOR_W))
         ],
         onTap: (value) {

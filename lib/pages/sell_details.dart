@@ -1,5 +1,6 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
+import 'package:dormdeals/constants/Headings.dart';
 import 'package:dormdeals/pages/Landing_Pg.dart';
 import 'package:flutter/material.dart';
 
@@ -41,10 +42,7 @@ class _SellDetailsState extends State<SellDetails> {
                             Navigator.of(context).pop();
                           },
                           icon: Icon(Icons.arrow_back)),
-                      Text(
-                        'Sell'.toUpperCase(),
-                        style: TextStyle(fontSize: 40, color: Colors.white),
-                      ),
+                      Headings(text: "sell"),
                     ],
                   ),
                   SizedBox(height: 20),
