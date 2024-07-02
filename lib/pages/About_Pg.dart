@@ -14,10 +14,20 @@ class AboutPg extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          Image.asset(
-            r"assets\images\Full_Logo.png",
-            height: 100,
-            // width: double.infinity,
+          Row(
+            children: [
+              IconButton(
+                  alignment: Alignment.topLeft,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back)),
+              Image.asset(
+                r"assets\images\Full_Logo.png",
+                height: 100,
+                // width: double.infinity,
+              ),
+            ],
           ),
           Headings(text: "About Us"),
           SubHeadings(
