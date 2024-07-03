@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "262386306290",
+    "project_id": "dormdeals-7a3a5",
+    "storage_bucket": "dormdeals-7a3a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262386306290:android:997afa380c972d55c0546b",
+        "android_client_info": {
+          "package_name": "com.example.dormdeals"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChzXdXYv-rdjD9ex0gdoevtvx_yH8Nhi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
