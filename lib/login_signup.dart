@@ -70,8 +70,9 @@ class LoginOrSignup extends StatelessWidget {
       },
       child: Text(
         text,
-        style:
-            TextStyle(color: text == "Login" ? TEXT_COLOR_W : LIGHT_BLUE_COLOR),
+        style: TextStyle(
+            color: text == "Login" ? TEXT_COLOR_W : LIGHT_BLUE_COLOR,
+            fontSize: 17),
       ),
       style: ElevatedButton.styleFrom(
           backgroundColor: text == "Login" ? LIGHT_BLUE_COLOR : TEXT_COLOR_W,

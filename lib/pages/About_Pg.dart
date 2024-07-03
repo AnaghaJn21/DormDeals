@@ -21,7 +21,10 @@ class AboutPg extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: Icon(Icons.arrow_back)),
+                  icon: Icon(
+                    Icons.arrow_back,
+                    size: 28,
+                  )),
               Image.asset(
                 r"assets\images\Full_Logo.png",
                 height: 100,

@@ -54,7 +54,7 @@ class _LandingPgState extends State<LandingPg> {
       extendBody: true,
       backgroundColor: DARK_BLUE_COLOR,
       bottomNavigationBar: CurvedNavigationBar(
-        color: LIGHT_BLUE_COLOR,
+        color: MORE_LIGHT_BLUE_COLOR,
         // buttonBackgroundColor: MORE_LIGHT_BLUE_COLOR,
         backgroundColor: Colors.transparent,
         index: _page,

@@ -13,19 +13,22 @@ class DetsFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, top: 40),
+      padding: const EdgeInsets.only(left: 5, top: 40),
       child: Column(
         children: [
           Align(
             alignment: Alignment.topLeft,
             child: Text(
               text,
-              style: TextStyle(color: TEXT_COLOR_W),
+              style: TextStyle(
+                  color: TEXT_COLOR_W,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w400),
             ),
           ),
           Padding(
             padding:
-                const EdgeInsets.only(bottom: 1, left: 30, top: 1, right: 20),
+                const EdgeInsets.only(bottom: 1, left: 20, top: 1, right: 20),
             child: TextField(
                 cursorColor: TEXT_COLOR_W,
                 controller: tc,

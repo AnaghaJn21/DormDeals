@@ -24,7 +24,7 @@ class _LoginPgState extends State<LoginPg> {
       child: Scaffold(
         backgroundColor: DARK_BLUE_COLOR,
         body: Padding(
-          padding: const EdgeInsets.only(left: 10, top: 40.0, right: 30),
+          padding: const EdgeInsets.only(left: 20, top: 40.0, right: 30),
           child: Column(
             children: [
               Row(
@@ -34,7 +34,10 @@ class _LoginPgState extends State<LoginPg> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      icon: Icon(Icons.arrow_back)),
+                      icon: Icon(
+                        Icons.arrow_back,
+                        size: 28,
+                      )),
                   Headings(text: "Login"),
                 ],
               ),
@@ -47,7 +50,8 @@ class _LoginPgState extends State<LoginPg> {
                 height: 30,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 40, bottom: 10),
+                padding: const EdgeInsets.only(
+                    bottom: 1, left: 30, top: 50, right: 20),
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -62,7 +66,7 @@ class _LoginPgState extends State<LoginPg> {
                     style: TextStyle(fontSize: 17.00),
                   ),
                   style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(345, 60),
+                      minimumSize: const Size(200, 45),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                 ),

@@ -13,7 +13,7 @@ class Headings extends StatelessWidget {
     return Text(
       text.toUpperCase(),
       style: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 23, color: TEXT_COLOR_W),
+          fontWeight: FontWeight.bold, fontSize: 28, color: TEXT_COLOR_W),
     );
   }
 }

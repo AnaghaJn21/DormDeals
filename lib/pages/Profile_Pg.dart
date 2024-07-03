@@ -22,7 +22,8 @@ class ProfilePg extends StatelessWidget {
                     },
                     icon: Icon(
                       Icons.arrow_back,
-                      color: TEXT_COLOR_W,
+                      // color: TEXT_COLOR_W,
+                      size: 28,
                     )),
                 SizedBox(
                   width: 10,
