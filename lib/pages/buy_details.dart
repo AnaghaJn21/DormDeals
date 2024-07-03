@@ -1,137 +1,138 @@
 import 'package:dormdeals/constants/Colors.dart';
+import 'package:dormdeals/constants/Headings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/icons.dart';
 
-class BuyDetails extends StatelessWidget {
-  const BuyDetails({super.key});
+class BuyDetails extends StatefulWidget {
+  final String title;
+  final String assetImage;
+  final String price;
+  final int rating;
+  const BuyDetails(
+      {super.key,
+      required this.title,
+      required this.assetImage,
+      required this.price,
+      required this.rating});
 
+  @override
+  State<BuyDetails> createState() => _BuyDetailsState();
+}
+
+class _BuyDetailsState extends State<BuyDetails> {
+  bool tap = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        color: DARK_BLUE_COLOR,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 30, top: 40.0, right: 40),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                      alignment: Alignment.topLeft,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          width: double.infinity,
+          color: DARK_BLUE_COLOR,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, top: 40.0, right: 10),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                        alignment: Alignment.topLeft,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(
+                          Icons.arrow_back,
+                          // color: TEXT_COLOR_W,
+                          size: 28,
+                        )),
+                    Headings(text: widget.title),
+                    Spacer(),
+                    IconButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        setState(() {
+                          tap = !tap;
+                        });
                       },
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: TEXT_COLOR_W,
-                      )),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Product1".toUpperCase(),
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23,
-                        color: TEXT_COLOR_W),
-                  ),
-                  SizedBox(
-                    width: 120,
-                  ),
-                  Icon(
-                    Icons.favorite_border_rounded,
-                    color: RED_COLOR,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Icon(
-                    Icons.share,
-                    color: TEXT_COLOR_W,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Container(
-                  color: Colors.white,
-                  height: 300,
-                  width: 300,
-                  child: Image.asset(
-                    "assets/images/Full_Logo.png",
-                    fit: BoxFit.contain,
-                  )),
-              SizedBox(
-                height: 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        "\$100",
-                        style: TextStyle(color: TEXT_COLOR_W),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text('Some details',
-                          style: TextStyle(color: TEXT_COLOR_W))
-                    ],
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.star,
-                            color: GOLDEN_COLOR,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: GOLDEN_COLOR,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: GOLDEN_COLOR,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: GOLDEN_COLOR,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: GOLDEN_COLOR,
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Text(
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-                style: TextStyle(color: TEXT_COLOR_W),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Contact Seller',
-                    style: TextStyle(color: DARK_BLUE_COLOR),
-                  )),
-            ],
+                      icon: Icon(Icons.favorite),
+                      color: tap ? RED_COLOR : TEXT_COLOR_W,
+                      iconSize: 28,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.share),
+                      color: TEXT_COLOR_W,
+                      iconSize: 28,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Container(
+                    color: Colors.white,
+                    height: 300,
+                    width: 300,
+                    child: Image.asset(
+                      widget.assetImage,
+                      fit: BoxFit.contain,
+                    )),
+                SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        SubHeadings(text: widget.price),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        SubHeadings(text: "SOme details")
+                      ],
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Row(
+                      children: List.generate(5, (starIndex) {
+                        return Icon(
+                          starIndex < widget.rating
+                              ? Icons.star
+                              : Icons.star_border,
+                          color: starIndex < widget.rating
+                              ? GOLDEN_COLOR
+                              : GRAY_COLOR,
+                          size: 20,
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                SubHeadings(
+                  text:
+                      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Contact Seller',
+                      style: TextStyle(color: DARK_BLUE_COLOR),
+                    )),
+                SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
           ),
         ),
       ),

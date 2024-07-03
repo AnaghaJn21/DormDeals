@@ -28,7 +28,7 @@ class BuyMainPg extends StatelessWidget {
             ),
             Headings(text: "All Products"),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(10.0),
               child: AllProductGV(),
             ),
           ],
