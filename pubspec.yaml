@@ -42,6 +42,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/LogoDD.png"
+  adaptive_icon_foreground: "assets/images/LogoDD2.png"
+  adaptive_icon_background: "assets/images/LogoDD2.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -65,7 +73,7 @@ flutter:
     - assets\lottie\Animation.json
     - assets\images\dorm-deals-high-resolution-logo.png
     - assets\images\Full_Logo.png
-    - assets\images\LogoDD.png
+    - assets\images\LogoDD2.png
     - assets\images\eachpro.png
     - assets\images\AnaghaJayan(2).jpg
     - assets\images\Jithin.jpg
