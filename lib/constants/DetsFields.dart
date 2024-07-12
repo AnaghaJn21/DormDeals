@@ -30,11 +30,22 @@ class DetsFields extends StatelessWidget {
             padding:
                 const EdgeInsets.only(bottom: 1, left: 20, top: 1, right: 20),
             child: TextField(
+                style: TextStyle(color: SUBTEXT_COLOR_W),
                 cursorColor: TEXT_COLOR_W,
                 controller: tc,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                          color: Colors.transparent), // Default border color
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                          color: Colors.transparent), // On-focus border color
+                    ),
                     filled: true,
                     fillColor: LIGHT_BLUE_COLOR)),
           )

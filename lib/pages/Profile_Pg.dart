@@ -71,9 +71,11 @@ class ProfilePg extends StatelessWidget {
               height: 40,
             ),
             Container(
-              width: 300,
+              width: double.infinity,
               height: 200,
-              color: LIGHT_BLUE_COLOR,
+              decoration: BoxDecoration(
+                  color: LIGHT_BLUE_COLOR,
+                  borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
@@ -83,36 +85,45 @@ class ProfilePg extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.person_pin,
-                          color: DARK_BLUE_COLOR,
+                          color: TEXT_COLOR_W,
                         ),
                         SizedBox(
                           width: 10,
                         ),
-                        Text('Anagha Jayan')
+                        Text(
+                          'Anagha Jayan',
+                          style: TextStyle(color: TEXT_COLOR_W),
+                        )
                       ],
                     ),
                     Row(
                       children: [
                         Icon(
                           Icons.email_outlined,
-                          color: DARK_BLUE_COLOR,
+                          color: TEXT_COLOR_W,
                         ),
                         SizedBox(
                           width: 10,
                         ),
-                        Text('aj25@gmail.com')
+                        Text(
+                          'aj25@gmail.com',
+                          style: TextStyle(color: TEXT_COLOR_W),
+                        )
                       ],
                     ),
                     Row(
                       children: [
                         Icon(
                           Icons.school,
-                          color: DARK_BLUE_COLOR,
+                          color: TEXT_COLOR_W,
                         ),
                         SizedBox(
                           width: 10,
                         ),
-                        Text('CSE 4th Year')
+                        Text(
+                          'CSE 4th Year',
+                          style: TextStyle(color: TEXT_COLOR_W),
+                        )
                       ],
                     ),
                   ],
@@ -137,12 +148,17 @@ class ProfilePg extends StatelessWidget {
                       Text(
                         'SOLD',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            color: TEXT_COLOR_W,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      Text("5")
+                      Text(
+                        "5",
+                        style: TextStyle(color: TEXT_COLOR_W),
+                      )
                     ],
                   ),
                 ),
@@ -161,12 +177,17 @@ class ProfilePg extends StatelessWidget {
                       Text(
                         'BOUGHT',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            color: TEXT_COLOR_W,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      Text("2")
+                      Text(
+                        "2",
+                        style: TextStyle(color: TEXT_COLOR_W),
+                      )
                     ],
                   ),
                 ),
@@ -178,11 +199,8 @@ class ProfilePg extends StatelessWidget {
             Center(
               child: ElevatedButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: LIGHT_BLUE_COLOR),
                   child: Text(
                     'LOGOUT',
-                    style: TextStyle(color: DARK_BLUE_COLOR),
                   )),
             ),
           ],

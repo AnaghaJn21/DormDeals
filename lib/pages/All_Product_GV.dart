@@ -54,7 +54,7 @@ class _AllProductGVState extends State<AllProductGV> {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisExtent: 355,
+          mainAxisExtent: 315,
           crossAxisCount: 2,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20),
@@ -87,7 +87,7 @@ class _AllProductGVState extends State<AllProductGV> {
                     padding: const EdgeInsets.only(bottom: 5.0),
                     child: Image.asset(
                       "${assetImage}",
-                      height: 190,
+                      height: 150,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
