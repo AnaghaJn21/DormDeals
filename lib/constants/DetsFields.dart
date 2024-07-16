@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 class DetsFields extends StatelessWidget {
   final String text;
+  final bool obscure;
   final TextEditingController tc;
   const DetsFields({
     super.key,
+    this.obscure = false,
     required this.text,
     required this.tc,
   });
@@ -30,6 +32,8 @@ class DetsFields extends StatelessWidget {
             padding:
                 const EdgeInsets.only(bottom: 1, left: 20, top: 1, right: 20),
             child: TextField(
+                obscuringCharacter: "•",
+                obscureText: obscure,
                 style: TextStyle(color: SUBTEXT_COLOR_W),
                 cursorColor: TEXT_COLOR_W,
                 controller: tc,

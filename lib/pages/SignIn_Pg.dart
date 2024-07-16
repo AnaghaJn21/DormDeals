@@ -1,21 +1,20 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
 import 'package:dormdeals/constants/Headings.dart';
-import 'package:dormdeals/pages/Landing_Pg.dart';
-import 'package:dormdeals/pages/sell_details.dart';
+import 'package:dormdeals/pages/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 TextEditingController emailcontroller = TextEditingController();
 TextEditingController pswdcontroller = TextEditingController();
 
-class LoginPg extends StatefulWidget {
-  const LoginPg({super.key});
+class SignInPg extends StatefulWidget {
+  const SignInPg({super.key});
 
   @override
-  State<LoginPg> createState() => _LoginPgState();
+  State<SignInPg> createState() => _SignInPgState();
 }
 
-class _LoginPgState extends State<LoginPg> {
+class _SignInPgState extends State<SignInPg> {
   String email = "";
   String pswd = "";
   @override
@@ -38,14 +37,18 @@ class _LoginPgState extends State<LoginPg> {
                         Icons.arrow_back,
                         size: 28,
                       )),
-                  Headings(text: "Login"),
+                  Headings(text: "Sign In"),
                 ],
               ),
               SizedBox(
                 height: 20,
               ),
               DetsFields(text: "Email-Id", tc: emailcontroller),
-              DetsFields(text: "Password", tc: pswdcontroller),
+              DetsFields(
+                text: "Password",
+                tc: pswdcontroller,
+                obscure: true,
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -53,16 +56,18 @@ class _LoginPgState extends State<LoginPg> {
                 padding: const EdgeInsets.only(
                     bottom: 1, left: 30, top: 50, right: 20),
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     setState(() {
                       email = emailcontroller.text;
                       pswd = pswdcontroller.text;
                     });
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LandingPg()));
+                    // emailcontroller.clear();
+                    // pswdcontroller.clear();
+                    await AuthService()
+                        .signin(email: email, pswd: pswd, context: context);
                   },
                   child: Text(
-                    "Login".toUpperCase(),
+                    "Sign In".toUpperCase(),
                     style: TextStyle(fontSize: 17.00),
                   ),
                   style: ElevatedButton.styleFrom(

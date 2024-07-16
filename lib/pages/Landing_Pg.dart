@@ -1,10 +1,7 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
-import 'package:dormdeals/pages/buy_details.dart';
 import 'package:dormdeals/constants/Colors.dart';
-import 'package:dormdeals/pages/All_Product_GV.dart';
 import 'package:dormdeals/pages/Buy_Main_Pg.dart';
-import 'package:dormdeals/pages/Login_Pg.dart';
 import 'package:dormdeals/pages/Profile_Pg.dart';
 import 'package:dormdeals/pages/About_Pg.dart';
 import 'package:dormdeals/pages/sell_details.dart';

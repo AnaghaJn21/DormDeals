@@ -1,10 +1,8 @@
 import 'package:dormdeals/firebase_options.dart';
-import 'package:dormdeals/pages/Buy_Main_Pg.dart';
-import 'package:dormdeals/pages/Profile_Pg.dart';
+import 'package:dormdeals/signin_signup.dart';
 import 'package:dormdeals/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:dormdeals/pages/About_Pg.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "DormDeals",
       // color: LIGHT_BLUE_COLOR,
-      home: SplashScreen(),
+      home: SigninOrSignup(),
     );
   }
 }

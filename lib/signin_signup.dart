@@ -1,12 +1,10 @@
 import 'package:dormdeals/constants/Colors.dart';
-import 'package:dormdeals/pages/Login_Pg.dart';
+import 'package:dormdeals/pages/SignIn_Pg.dart';
 import 'package:dormdeals/pages/SignUp_Pg.dart';
-import 'package:dormdeals/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class LoginSignup extends StatelessWidget {
-  const LoginSignup({super.key});
+class SigninOrSignup extends StatelessWidget {
+  const SigninOrSignup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +31,15 @@ class LoginSignup extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  LoginOrSignup(
-                    text: "Login",
-                    navigateTo: () => LoginPg(),
+                  GoTo(
+                    text: "Sign In",
+                    navigateTo: () => SignInPg(),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  LoginOrSignup(
-                    text: "SignUp",
+                  GoTo(
+                    text: "Sign Up",
                     navigateTo: () => SignUpPg(),
                   ),
                 ],
@@ -52,10 +50,10 @@ class LoginSignup extends StatelessWidget {
   }
 }
 
-class LoginOrSignup extends StatelessWidget {
+class GoTo extends StatelessWidget {
   final Widget Function() navigateTo;
   final String text;
-  const LoginOrSignup({
+  const GoTo({
     super.key,
     required this.navigateTo,
     required this.text,
@@ -71,11 +69,11 @@ class LoginOrSignup extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-            color: text == "Login" ? TEXT_COLOR_W : LIGHT_BLUE_COLOR,
+            color: text == "Sign In" ? TEXT_COLOR_W : LIGHT_BLUE_COLOR,
             fontSize: 17),
       ),
       style: ElevatedButton.styleFrom(
-          backgroundColor: text == "Login" ? LIGHT_BLUE_COLOR : TEXT_COLOR_W,
+          backgroundColor: text == "Sign In" ? LIGHT_BLUE_COLOR : TEXT_COLOR_W,
           minimumSize: Size(345, 60)),
     );
   }
