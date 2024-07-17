@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:random_string/random_string.dart';
 
 class AuthService {
@@ -18,8 +18,8 @@ class AuthService {
       required String pswd,
       required BuildContext context}) async {
     if (!domain) {
-      Fluttertoast.showToast(
-          msg: "Invalid Domain. Kindly SignIn using gectcr domain");
+      // Fluttertoast.showToast(
+      // msg: "Invalid Domain. Kindly SignIn using gectcr domain");
       return;
     }
     try {
@@ -30,7 +30,7 @@ class AuthService {
       await DatabaseMethods()
           .addSignUpDets(userDets, email.split("@")[0])
           .then((value) {
-        Fluttertoast.showToast(msg: "Sign Up Success!");
+        // Fluttertoast.showToast(msg: "Sign Up Success!");
       });
       await Future.delayed(const Duration(seconds: 1));
       Navigator.push(
@@ -42,7 +42,7 @@ class AuthService {
       } else if (e.code == "email-already-in-use") {
         message = "An account already exists with that email";
       }
-      Fluttertoast.showToast(msg: message);
+      // Fluttertoast.showToast(msg: message);
     } catch (e) {}
   }
 
@@ -53,7 +53,7 @@ class AuthService {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: pswd);
-      Fluttertoast.showToast(msg: "Signed In Successfully");
+      // Fluttertoast.showToast(msg: "Signed In Successfully");
       await Future.delayed(const Duration(seconds: 1));
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => LandingPg()));
@@ -63,7 +63,7 @@ class AuthService {
       if (e.code == 'invalid-credential') {
         message = "Invalid User or Password";
 
-        Fluttertoast.showToast(msg: message);
+        // Fluttertoast.showToast(msg: message);
       }
     } catch (e) {}
   }
@@ -71,10 +71,9 @@ class AuthService {
   Future<void> signout({required BuildContext context}) async {
     await FirebaseAuth.instance.signOut();
     await Future.delayed(const Duration(seconds: 1));
-    print("Signout");
-    Navigator.pop(
-      context,
-    );
-    Fluttertoast.showToast(msg: "You have been logged out.");
+    // print("Signout");
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SigninOrSignup()));
+    // Fluttertoast.showToast(msg: "You have been logged out.");
   }
 }
