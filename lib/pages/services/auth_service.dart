@@ -76,4 +76,24 @@ class AuthService {
         context, MaterialPageRoute(builder: (context) => SigninOrSignup()));
     Fluttertoast.showToast(msg: "You have been logged out.");
   }
+
+  Future<void> sendPasswordResetEmail(
+      {required String email, required BuildContext context}) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Password reset email sent')));
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Failed to send')));
+    }
+  }
+
+  Future<Map<String, dynamic>?> getUserData(String uid) async {
+    try {
+      return await DatabaseMethods().getUserData(uid);
+    } catch (e) {
+      print('error');
+    }
+  }
 }

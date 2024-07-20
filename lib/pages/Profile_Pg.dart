@@ -4,10 +4,37 @@ import 'package:dormdeals/pages/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePg extends StatelessWidget {
+class ProfilePg extends StatefulWidget {
   const ProfilePg({super.key});
 
   @override
+  State<ProfilePg> createState() => _ProfilePgState();
+}
+
+class _ProfilePgState extends State<ProfilePg> {
+  late String name = '';
+  late String number = '';
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  void fetchUserData() async {
+    String email = FirebaseAuth.instance.currentUser!.email!;
+    String uid = email.split('@')[0];
+
+    Map<String, dynamic>? userData = await AuthService().getUserData(uid);
+
+    if (userData != null) {
+      setState(() {
+        name = userData['Name'];
+        number = userData['Contact'];
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: DARK_BLUE_COLOR,
@@ -95,7 +122,7 @@ class ProfilePg extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            "Name",
+                            name,
                             style: TextStyle(color: TEXT_COLOR_W),
                           )
                         ],
@@ -119,14 +146,14 @@ class ProfilePg extends StatelessWidget {
                       Row(
                         children: [
                           Icon(
-                            Icons.school,
+                            Icons.phone,
                             color: TEXT_COLOR_W,
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Text(
-                            'CSE 4th Year',
+                            number,
                             style: TextStyle(color: TEXT_COLOR_W),
                           )
                         ],

@@ -1,7 +1,10 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/Headings.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/icons.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BuyDetails extends StatefulWidget {
   final String title;
@@ -20,9 +23,14 @@ class BuyDetails extends StatefulWidget {
 }
 
 class _BuyDetailsState extends State<BuyDetails> {
+  Razorpay _razorpay = Razorpay();
+
   bool tap = false;
   @override
   Widget build(BuildContext context) {
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -123,9 +131,22 @@ class _BuyDetailsState extends State<BuyDetails> {
                   height: 50,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      var options = {
+                        'key': 'rzp_test_GcZZFDPP0jHtC4',
+                        'amount': 1000,
+                        'name': 'Product1',
+                        'description': 'Pen',
+                        'prefill': {
+                          'contact': '8888888888',
+                          'email': 'test@razorpay.com'
+                        }
+                      };
+
+                      _razorpay.open(options);
+                    },
                     child: Text(
-                      'Contact Seller',
+                      'Buy Now',
                       style: TextStyle(color: DARK_BLUE_COLOR),
                     )),
                 SizedBox(
@@ -137,5 +158,25 @@ class _BuyDetailsState extends State<BuyDetails> {
         ),
       ),
     );
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Do something when payment succeeds
+    Fluttertoast.showToast(msg: "Payment Success");
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    // Do something when payment fails
+    Fluttertoast.showToast(msg: "Payment Failed");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    try {
+      _razorpay.clear();
+    } catch (e) {
+      print(e);
+    }
   }
 }

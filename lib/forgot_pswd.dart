@@ -1,23 +1,23 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
 import 'package:dormdeals/constants/Headings.dart';
-import 'package:dormdeals/forgot_pswd.dart';
+// import 'package:dormdeals/pages/SignIn_Pg.dart';
 import 'package:dormdeals/pages/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 TextEditingController emailcontroller = TextEditingController();
-TextEditingController pswdcontroller = TextEditingController();
+// TextEditingController pswdcontroller = TextEditingController();
 
-class SignInPg extends StatefulWidget {
-  const SignInPg({super.key});
+class ForgotPassWord extends StatefulWidget {
+  const ForgotPassWord({super.key});
 
   @override
-  State<SignInPg> createState() => _SignInPgState();
+  State<ForgotPassWord> createState() => _ForgotPassWordState();
 }
 
-class _SignInPgState extends State<SignInPg> {
+class _ForgotPassWordState extends State<ForgotPassWord> {
   String email = "";
-  String pswd = "";
+  // String pswd = "";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,18 +38,13 @@ class _SignInPgState extends State<SignInPg> {
                         Icons.arrow_back,
                         size: 28,
                       )),
-                  Headings(text: "Sign In"),
+                  Headings(text: "ACCOUNT RECOVERY"),
                 ],
               ),
               SizedBox(
                 height: 20,
               ),
               DetsFields(text: "Email-Id", tc: emailcontroller),
-              DetsFields(
-                text: "Password",
-                tc: pswdcontroller,
-                obscure: true,
-              ),
               SizedBox(
                 height: 30,
               ),
@@ -60,15 +55,15 @@ class _SignInPgState extends State<SignInPg> {
                   onPressed: () async {
                     setState(() {
                       email = emailcontroller.text;
-                      pswd = pswdcontroller.text;
+                      // pswd = pswdcontroller.text;
                     });
                     // emailcontroller.clear();
                     // pswdcontroller.clear();
                     await AuthService()
-                        .signin(email: email, pswd: pswd, context: context);
+                        .sendPasswordResetEmail(email: email, context: context);
                   },
                   child: Text(
-                    "Sign In".toUpperCase(),
+                    "Reset Password".toUpperCase(),
                     style: TextStyle(fontSize: 17.00),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -77,18 +72,15 @@ class _SignInPgState extends State<SignInPg> {
                           borderRadius: BorderRadius.circular(10))),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ForgotPassWord()),
-                  );
-                },
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Text("Forgot Password?"),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   },
+              //   child: Align(
+              //     alignment: Alignment.topRight,
+              //     child: Text("Back to Login"),
+              //   ),
+              // ),
             ],
           ),
         ),
