@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class DetsFields extends StatelessWidget {
   final String text;
   final bool obscure;
+  // final bool isEnabled;
   final TextEditingController tc;
   const DetsFields({
     super.key,
     this.obscure = false,
+    // this.isEnabled = true,
     required this.text,
     required this.tc,
   });
@@ -32,7 +34,8 @@ class DetsFields extends StatelessWidget {
             padding:
                 const EdgeInsets.only(bottom: 1, left: 20, top: 1, right: 20),
             child: TextField(
-                obscuringCharacter: "•",
+                // enabled: isEnabled,
+                obscuringCharacter: "●",
                 obscureText: obscure,
                 style: TextStyle(color: SUBTEXT_COLOR_W),
                 cursorColor: TEXT_COLOR_W,

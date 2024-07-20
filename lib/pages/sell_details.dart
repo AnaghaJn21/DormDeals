@@ -1,13 +1,18 @@
 import 'dart:io';
+import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/DetsFields.dart';
 import 'package:dormdeals/constants/Headings.dart';
 import 'package:dormdeals/pages/Landing_Pg.dart';
 import 'package:dormdeals/pages/services/Database.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:random_string/random_string.dart';
 
 class SellDetails extends StatefulWidget {
   SellDetails({super.key});
@@ -22,14 +27,21 @@ class _SellDetailsState extends State<SellDetails> {
   final TextEditingController descController = TextEditingController();
   final TextEditingController numController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
+  final TextEditingController pidController = TextEditingController();
   String name = "";
-  String pname = "";
+  String productname = "";
   String desc = "";
   String price = "";
+  String uid = FirebaseAuth.instance.currentUser!.email!.toString();
+  String pid = "";
   String showYear = "Select Year";
   DateTime selectedYear = DateTime.now();
   String dropdownValue = "Select";
   PlatformFile? pickedFile;
+  UploadTask? uploadTask;
+  String urlDownload = '';
+
+  //FILE PICKER
   Future selectFile() async {
     final result = await FilePicker.platform.pickFiles();
     if (result == null) return;
@@ -38,6 +50,34 @@ class _SellDetailsState extends State<SellDetails> {
     });
   }
 
+  //FILE UPLOADING
+  Future uploadFile() async {
+    if (pickedFile == null) {
+      print('No file selected');
+      return;
+    }
+    final path = 'Files/${uid}/${pid}';
+    final file = File(pickedFile!.path!);
+    final contentType = pickedFile!.extension ?? 'octet-stream';
+    final ref = FirebaseStorage.instance.ref().child(path);
+    final metadata = SettableMetadata(contentType: 'image/$contentType');
+
+    try {
+      uploadTask = ref.putFile(file, metadata);
+      final snapshot = await uploadTask!.whenComplete(() {});
+      final downloadURL = await snapshot.ref.getDownloadURL();
+      setState(() {
+        urlDownload = downloadURL;
+      });
+      print('File uploaded successfully, download URL: $urlDownload');
+      Fluttertoast.showToast(msg: 'The image was successfully uploaded.');
+    } catch (e) {
+      print('Error uploading file: $e');
+      Fluttertoast.showToast(msg: 'Failed to upload image.');
+    }
+  }
+
+  //YEAR PICKER
   selectYear(context) async {
     showDialog(
         context: context,
@@ -66,10 +106,16 @@ class _SellDetailsState extends State<SellDetails> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
+    initializeData();
+  }
+
+  void initializeData() async {
+    nameController.text = uid;
+
+    pid = await DatabaseMethods().uniqueId(uid);
     setState(() {
-      //Set SellerName From Database or something
-      // nameController.text = "Aj";
+      pidController.text = pid;
     });
   }
 
@@ -95,7 +141,16 @@ class _SellDetailsState extends State<SellDetails> {
                     ],
                   ),
                   SizedBox(height: 20),
-                  DetsFields(text: 'Seller Name', tc: nameController),
+                  DetsFields(
+                    text: 'Seller Name',
+                    tc: nameController,
+                    // isEnabled: false
+                  ),
+
+                  DetsFields(
+                    text: 'Product Id', tc: pidController,
+                    // isEnabled: false
+                  ),
                   SizedBox(
                     height: 40,
                   ),
@@ -139,7 +194,8 @@ class _SellDetailsState extends State<SellDetails> {
                             },
                             child: pickedFile != null
                                 ? Text(
-                                    pickedFile!.name,
+                                    // pickedFile!.name,
+                                    "View Selected File",
                                     style: TextStyle(
                                         decoration: TextDecoration.underline,
                                         decorationThickness: 2,
@@ -162,10 +218,10 @@ class _SellDetailsState extends State<SellDetails> {
                       ],
                     ),
                   ),
-                  DetsFields(text: 'Product Type', tc: productnameController),
+                  DetsFields(text: 'Product Name', tc: productnameController),
                   DetsFields(
                       text: 'Description of Product', tc: descController),
-                  DetsFields(text: 'Contact Number', tc: nameController),
+                  // DetsFields(text: 'Contact Number', tc: numController),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0, top: 40),
                     child: Column(
@@ -246,6 +302,7 @@ class _SellDetailsState extends State<SellDetails> {
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     dropdownValue = newValue!;
+                                    print(dropdownValue);
                                   });
                                 }),
                           ),
@@ -263,13 +320,33 @@ class _SellDetailsState extends State<SellDetails> {
                         left: 30, top: 40, bottom: 100, right: 30),
                     child: ElevatedButton(
                       onPressed: () async {
-                        setState(() {});
-                        // Map<String, dynamic> productDets = {};
-                        // await DatabaseMethods()
-                        //     .addItems(productDets, id, pid)
-                        //     .then((value) {
-                        //   Fluttertoast.showToast(msg: "Sign Up Success!");
-                        // });
+                        await uploadFile();
+                        setState(() {
+                          name = nameController.text;
+                          productname = productnameController.text;
+                          desc = descController.text;
+                          price = priceController.text;
+                          //dropdown val
+                          //Year
+                          //file
+                        });
+                        Map<String, dynamic> productDets = {
+                          "SName": name,
+                          "Product Name": productname,
+                          "Product Id": pid,
+                          "About": desc,
+                          "Price": price,
+                          "Type": dropdownValue,
+                          "Year": selectedYear,
+                          "Image": urlDownload,
+                        };
+                        // String pid = randomAlphaNumeric(10);
+                        await DatabaseMethods()
+                            .addItems(productDets, uid, pid)
+                            .then((value) {
+                          Fluttertoast.showToast(
+                              msg: "Details Added Successfully");
+                        });
                         Navigator.push(
                             context,
                             MaterialPageRoute(
