@@ -7,16 +7,9 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class BuyDetails extends StatefulWidget {
-  final String title;
-  final String assetImage;
-  final String price;
-  final int rating;
-  const BuyDetails(
-      {super.key,
-      required this.title,
-      required this.assetImage,
-      required this.price,
-      required this.rating});
+  final Map<String, dynamic> productDetails;
+
+  const BuyDetails({super.key, required this.productDetails});
 
   @override
   State<BuyDetails> createState() => _BuyDetailsState();
@@ -53,7 +46,7 @@ class _BuyDetailsState extends State<BuyDetails> {
                           // color: TEXT_COLOR_W,
                           size: 28,
                         )),
-                    Headings(text: widget.title),
+                    Headings(text: widget.productDetails['Product Name']),
                     Spacer(),
                     IconButton(
                       onPressed: () {
@@ -83,8 +76,8 @@ class _BuyDetailsState extends State<BuyDetails> {
                     color: Colors.white,
                     height: 300,
                     width: 300,
-                    child: Image.asset(
-                      widget.assetImage,
+                    child: Image.network(
+                      widget.productDetails['Image'],
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
@@ -95,11 +88,12 @@ class _BuyDetailsState extends State<BuyDetails> {
                   children: [
                     Column(
                       children: [
-                        SubHeadings(text: widget.price),
+                        SubHeadings(
+                            text: '\$${widget.productDetails['Price']}'),
                         SizedBox(
                           height: 10,
                         ),
-                        SubHeadings(text: "SOme details")
+                        SubHeadings(text: widget.productDetails['Type']),
                       ],
                     ),
                     SizedBox(
@@ -108,12 +102,8 @@ class _BuyDetailsState extends State<BuyDetails> {
                     Row(
                       children: List.generate(5, (starIndex) {
                         return Icon(
-                          starIndex < widget.rating
-                              ? Icons.star
-                              : Icons.star_border,
-                          color: starIndex < widget.rating
-                              ? GOLDEN_COLOR
-                              : GRAY_COLOR,
+                          starIndex < 4 ? Icons.star : Icons.star_border,
+                          color: starIndex < 4 ? GOLDEN_COLOR : GRAY_COLOR,
                           size: 20,
                         );
                       }),
@@ -124,8 +114,7 @@ class _BuyDetailsState extends State<BuyDetails> {
                   height: 50,
                 ),
                 SubHeadings(
-                  text:
-                      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                  text: widget.productDetails['About'],
                 ),
                 SizedBox(
                   height: 50,
@@ -134,9 +123,10 @@ class _BuyDetailsState extends State<BuyDetails> {
                     onPressed: () {
                       var options = {
                         'key': 'rzp_test_GcZZFDPP0jHtC4',
-                        'amount': 1000,
-                        'name': 'Product1',
-                        'description': 'Pen',
+                        'amount':
+                            int.parse(widget.productDetails['Price']) * 100,
+                        'name': widget.productDetails['Product Name'],
+                        'description': widget.productDetails['Type'],
                         'prefill': {
                           'contact': '8888888888',
                           'email': 'test@razorpay.com'

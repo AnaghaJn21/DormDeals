@@ -46,22 +46,23 @@ class DatabaseMethods {
     }
   }
 
-  // Future<Map<String, dynamic>?> fetchProductDetails(
-  //     String sellerEmail, String productId) async {
-  //   try {
-  //     DocumentSnapshot doc = await FirebaseFirestore.instance
-  //         .collection(sellerEmail) // Collection name is the seller's email
-  //         .doc(productId) // Document ID is the product ID
-  //         .get();
-  //     if (doc.exists) {
-  //       return doc.data() as Map<String, dynamic>?; // Return product details
-  //     } else {
-  //       print('No such product');
-  //       return null;
-  //     }
-  //   } catch (e) {
-  //     print('Error fetching product details: $e');
-  //     return null;
-  //   }
-  // }
+  Future<List<Map<String, dynamic>>> fetchAllProducts() async {
+    List<Map<String, dynamic>> allProducts = [];
+    try {
+      QuerySnapshot sellerSnapshots =
+          await FirebaseFirestore.instance.collection('SignIn Details').get();
+      for (var seller in sellerSnapshots.docs) {
+        String sellerId = seller.id;
+        String sellerEmail = "$sellerId@gectcr.ac.in";
+        QuerySnapshot productSnapshots =
+            await FirebaseFirestore.instance.collection(sellerEmail).get();
+        for (var product in productSnapshots.docs) {
+          allProducts.add(product.data() as Map<String, dynamic>);
+        }
+      }
+    } catch (e) {
+      print('Error fetching products: $e');
+    }
+    return allProducts;
+  }
 }
