@@ -1,5 +1,6 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/Headings.dart';
+import 'package:dormdeals/pages/services/Database.dart';
 import 'package:dormdeals/pages/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class ProfilePg extends StatefulWidget {
 class _ProfilePgState extends State<ProfilePg> {
   late String name = '';
   late String number = '';
+  int soldcount = 0;
 
   @override
   void initState() {
@@ -32,7 +34,16 @@ class _ProfilePgState extends State<ProfilePg> {
         name = userData['Name'];
         number = userData['Contact'];
       });
+      fetchSoldItemCount();
     }
+  }
+
+  void fetchSoldItemCount() async {
+    String email = FirebaseAuth.instance.currentUser!.email!;
+    int count = await DatabaseMethods().getSoldItemCount(email);
+    setState(() {
+      soldcount = count;
+    });
   }
 
   Widget build(BuildContext context) {
@@ -188,7 +199,7 @@ class _ProfilePgState extends State<ProfilePg> {
                           height: 20,
                         ),
                         Text(
-                          "5",
+                          soldcount.toString(),
                           style: TextStyle(color: TEXT_COLOR_W),
                         )
                       ],

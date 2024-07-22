@@ -1,5 +1,7 @@
 import 'package:dormdeals/constants/Colors.dart';
 import 'package:dormdeals/constants/Headings.dart';
+import 'package:dormdeals/pages/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/icons.dart';
@@ -17,9 +19,28 @@ class BuyDetails extends StatefulWidget {
 
 class _BuyDetailsState extends State<BuyDetails> {
   Razorpay _razorpay = Razorpay();
-
+  late String number = '';
+  late String emai = '';
   bool tap = false;
   @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  void fetchUserData() async {
+    String email = FirebaseAuth.instance.currentUser!.email!;
+    String uid = email.split('@')[0];
+
+    Map<String, dynamic>? userDoc = await AuthService().getUserData(uid);
+    if (userDoc != null) {
+      setState(() {
+        number = userDoc['Contact'];
+        emai = email;
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
@@ -127,10 +148,7 @@ class _BuyDetailsState extends State<BuyDetails> {
                             int.parse(widget.productDetails['Price']) * 100,
                         'name': widget.productDetails['Product Name'],
                         'description': widget.productDetails['Type'],
-                        'prefill': {
-                          'contact': '8888888888',
-                          'email': 'test@razorpay.com'
-                        }
+                        'prefill': {'contact': number, 'email': emai}
                       };
 
                       _razorpay.open(options);

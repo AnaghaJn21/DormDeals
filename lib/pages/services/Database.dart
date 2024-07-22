@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 class DatabaseMethods {
   Future addSignUpDets(Map<String, dynamic> userDets, String id) async {
     return await FirebaseFirestore.instance
@@ -49,11 +51,18 @@ class DatabaseMethods {
   Future<List<Map<String, dynamic>>> fetchAllProducts() async {
     List<Map<String, dynamic>> allProducts = [];
     try {
+      String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
+
       QuerySnapshot sellerSnapshots =
           await FirebaseFirestore.instance.collection('SignIn Details').get();
       for (var seller in sellerSnapshots.docs) {
         String sellerId = seller.id;
         String sellerEmail = "$sellerId@gectcr.ac.in";
+
+        if (sellerEmail == currentUserEmail) {
+          continue;
+        }
+
         QuerySnapshot productSnapshots =
             await FirebaseFirestore.instance.collection(sellerEmail).get();
         for (var product in productSnapshots.docs) {
@@ -64,5 +73,16 @@ class DatabaseMethods {
       print('Error fetching products: $e');
     }
     return allProducts;
+  }
+
+  Future<int> getSoldItemCount(String email) async {
+    try {
+      QuerySnapshot snapshot =
+          await FirebaseFirestore.instance.collection(email).get();
+      return snapshot.docs.length;
+    } catch (e) {
+      print('Error fetching sold item count: $e');
+      return 0;
+    }
   }
 }
